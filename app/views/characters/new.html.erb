@@ -1,15 +1,54 @@
+<script>
+
+$(function() {
+  $.get("http://dnd5eapi.co/api/races").success( function ( data ) {
+    // var races = <%= @races %>;
+    var races = []
+    $.each(data.results, function( x, y ) {
+      races.push(y.name)
+    });
+    // console.log(races)
+  });
+});
+
+
+
+$(function() {
+  $.get("http://dnd5eapi.co/api/races/").success( function ( data) {
+    $.each(data.results, function( x, y ) {
+      console.log(y.name)
+    });
+    // console.log(data.results)
+  });
+
+  $.get("http://dnd5eapi.co/api/classes/").success( function ( data) {
+    $.each(data.results, function( x, y ) {
+      console.log(y.name)
+    });
+    // console.log(data.results)
+  });
+
+  $.get("http://dnd5eapi.co/api/ability-scores/").success( function ( data) {
+    $.each(data.results, function( x, y ) {
+      console.log(y.name)
+    });
+    // console.log(data.results)
+  });
+});
+
+</script>
 
 
 <h1>Enter Your Character Details</h1>
 
 <%= simple_form_for @character do |f| %>
-  <%= f.input :race, collection: @races %>
+  <%= f.input :race, collection: ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"] %>
   <%= f.input :gender, collection: ["Male", "Female"] %>
-  <%= f.input :age %>
-  <%= f.input :charclass %>
+  <%= f.input :age, collection: 10..200 %>
+  <%= f.input :charclass, collection: ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"] %>
   <%= f.input :level %>
   <%= f.input :name %>
-  <%= f.input :alignment %>
+  <%= f.input :alignment, collection: ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"] %>
   <%= f.input :description %>
   <%= f.input :equipment %>
   <%= f.input :spell %>

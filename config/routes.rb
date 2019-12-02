@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   root 'characters#index'
   resources :characters
+  resources :users, only: :show
 
 end

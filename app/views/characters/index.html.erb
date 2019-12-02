@@ -1,3 +1,30 @@
 
 
 <h1>D&D 5th Edition Character Creator</h1>
+
+<p><%= @characters.inspect %></p>
+
+<% @characters.each do |character| %>
+  <div>
+    <h3><%= character.name %></h3><br />
+    <p><%= character.race %></p><br />
+    <p><%= character.gender %></p><br />
+    <p><%= character.age %></p><br />
+    <p><%= character.charclass %></p><br />
+    <p><%= character.level %></p><br />
+    <p><%= character.alignment %></p><br />
+    <p><%= character.description %></p><br />
+    <p><%= character.equipment %></p><br />
+    <p><%= character.spell %></p><br />
+    <p><%= character.strstat %></p><br />
+    <p><%= character.dexstat %></p><br />
+    <p><%= character.constat %></p><br />
+    <p><%= character.intstat %></p><br />
+    <p><%= character.wisstat %></p><br />
+    <p><%= character.chastat %></p><br />
+    <p><%= character.wealth %></p><br />
+    <p><%= character.user.email %></p><br />
+  </div>
+
+  <hr />
+<% end %>
