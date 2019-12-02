@@ -1,1 +1,27 @@
+
+
 <h1>Enter Your Character Details</h1>
+
+<%= simple_form_for @character do |f| %>
+  <%= f.input :race, collection: @races %>
+  <%= f.input :gender, collection: ["Male", "Female"] %>
+  <%= f.input :age %>
+  <%= f.input :charclass %>
+  <%= f.input :level %>
+  <%= f.input :name %>
+  <%= f.input :alignment %>
+  <%= f.input :description %>
+  <%= f.input :equipment %>
+  <%= f.input :spell %>
+  <%= f.input :wealth %>
+  <%= f.input :strstat %>
+  <%= f.input :dexstat %>
+  <%= f.input :constat %>
+  <%= f.input :intstat %>
+  <%= f.input :wisstat %>
+  <%= f.input :chastat %>
+
+  <br />
+  <%= f.submit 'Create', class: 'btn btn-primary' %>
+<% end %>
+   
