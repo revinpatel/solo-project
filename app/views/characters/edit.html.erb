@@ -1,45 +1,6 @@
-<script>
-
-$(function() {
-  $.get("http://dnd5eapi.co/api/races").success( function ( data ) {
-    // var races = <%= @races %>;
-    var races = []
-    $.each(data.results, function( x, y ) {
-      races.push(y.name)
-    });
-    // console.log(races)
-  });
-});
-
-
-
-$(function() {
-  $.get("http://dnd5eapi.co/api/races/").success( function ( data) {
-    $.each(data.results, function( x, y ) {
-      console.log(y.name)
-    });
-    // console.log(data.results)
-  });
-
-  $.get("http://dnd5eapi.co/api/classes/").success( function ( data) {
-    $.each(data.results, function( x, y ) {
-      console.log(y.name)
-    });
-    // console.log(data.results)
-  });
-
-  $.get("http://dnd5eapi.co/api/ability-scores/").success( function ( data) {
-    $.each(data.results, function( x, y ) {
-      console.log(y.name)
-    });
-    // console.log(data.results)
-  });
-});
-
-</script>
 
 <div class="char-box col-10 offset-1">
-  <h1>Enter Your Character Details</h1>
+  <h1>Edit Your Character Details</h1>
 
   <%= simple_form_for @character do |f| %>
     <%= f.input :race, collection: ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"] %>
@@ -61,6 +22,6 @@ $(function() {
     <%= f.input :chastat %>
 
     <br />
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
   <% end %>
 </div>   

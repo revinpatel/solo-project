@@ -10,6 +10,8 @@
   </head>
 
   <body>  
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
 
     <div id="flex-content-container">
       <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
@@ -22,7 +24,7 @@
           <ul class="navbar-nav">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'My Dashboard', '#', class: 'nav-link' %>
+                <%= link_to 'My Dashboard', user_path(current_user), class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Log out?', destroy_user_session_path, method: :delete, class: 'nav-link' %>
@@ -53,11 +55,21 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-sm-3">
-            <b>Current Users</b>
-            <br />
-            <%= link_to 'Create A Character', new_character_path %>
-            <br />
-            <%= link_to 'My Dashboard', '#' %>
+            <% if user_signed_in? %>
+              <b>Current Users</b>
+              <br />
+              <%= link_to 'My Dashboard', user_path(current_user) %>
+              <br />
+              <%= link_to 'Create A Character', new_character_path %>
+              <br />
+              <%= link_to 'Log out?', destroy_user_session_path %>
+            <% else %>
+              <b>New Users</b>
+              <br />
+              <%= link_to 'Log in!', new_user_session_path %>
+              <br />
+              <%= link_to 'Sign up!', new_user_registration_path %>
+            <% end %>
           </div>
           <div class="col-12 col-sm-3">
             <b>About</b>
@@ -84,7 +96,7 @@
             <%= link_to 'http://github.com/revinpatel' do %>
               <span class="fa fa-github-square fa-2x social-button"></span>
             <% end %>
-            <span class="fa fa-facebook-square fa-2x social-button"></span>
+            <div class="fb-share-button" data-href="https://solo-project-revin-patel.herokuapp.com/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsolo-project-revin-patel.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
             <span class="fa fa-twitter-square fa-2x social-button"></span>
           </div>
         </div>

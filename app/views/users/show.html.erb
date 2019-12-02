@@ -1,0 +1,56 @@
+<br />
+<br />
+
+<h1 class="col-10 offset-1">
+    My Characters:
+    <div class="float-right">
+        <%= link_to 'Create A Character', new_character_path %>
+    </div>
+</h1>
+<br />
+<br />
+
+
+<% @characters.each do |character| %>
+  <div class="char-box col-10 offset-1">
+    <div class="char-box">
+        <h3>
+            Character Name: <%= character.name %>
+            <div class="float-right">
+                <% if current_user && current_user == character.user %>
+                    <%= link_to 'Edit Character', edit_character_path(character), class: 'btn btn-primary' %>
+                    <%= link_to 'Delete Character', character_path(character), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+                <% end %>
+            </div>
+        </h3>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="details-box">
+                <p>Level: <%= character.level %> || Race: <%= character.race %> || Class: <%= character.charclass %></p><br />
+                <p>Alignment: <%= character.alignment %> || Gender: <%= character.gender %> || Age: <%= character.age %> || Wealth: <%= character.wealth %></p><br />
+                <p>Background/Description: <%= character.description %></p>
+            </div>
+            <div class="details-box">
+                <p>STRENGTH: <%= character.strstat %></p>
+                <p>DEXTERITY: <%= character.dexstat %></p>
+                <p>CONCENTRATION: <%= character.constat %></p>
+                <p>INTELLIGENCE: <%= character.intstat %></p>
+                <p>WISDOM: <%= character.wisstat %></p>
+                <p>CHARM: <%= character.chastat %></p>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="details-box">
+                <p>Equipment: <%= character.equipment %></p><br />
+                <p>Spells: <%= character.spell %></p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <p>User: <%= character.user.email %></p>
+    </div>
+  </div>
+
+  <hr />
+<% end %>

@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @characters = Character.all
+    @democharacters = Character.where(user_id: 1)
   end
 
   def new
@@ -18,6 +18,35 @@ class CharactersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @character = Character.find(params[:id])
+    if @character.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+  end
+
+  def update
+    @character = Character.find(params[:id])
+    if @character.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+    @character.update_attributes(character_params)
+    if @character.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @character = Character.find(params[:id])
+    if @character.user != current_user
+      return render plain: 'Not allowed', status: :forbidden
+    end
+    @character.destroy
+    redirect_to root_path
   end
 
   private

@@ -1,30 +1,48 @@
+<br />
+<br />
+<div class="char-box col-10 offset-1">
+  <h1>D&D 5th Edition Character Creator</h1>
+
+  <br />
+  <br />
+
+  <h2>
+    Demo Characters
+    <div class="float-right">
+      <%= link_to 'Create A Character', new_character_path %>
+    </div>
+  </h2>
+
+  <% @democharacters.each do |character| %>
+    <div class="char-box">
+        <h3>Character Name: <%= character.name %></h3>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+          <div class="details-box">
+              <p>Level: <%= character.level %> || Race: <%= character.race %> || Class: <%= character.charclass %></p><br />
+              <p>Alignment: <%= character.alignment %> || Gender: <%= character.gender %> || Age: <%= character.age %> || Wealth: <%= character.wealth %></p><br />
+              <p>Background/Description: <%= character.description %></p>
+          </div>
+          <div class="details-box">
+              <p>STRENGTH: <%= character.strstat %></p>
+              <p>DEXTERITY: <%= character.dexstat %></p>
+              <p>CONCENTRATION: <%= character.constat %></p>
+              <p>INTELLIGENCE: <%= character.intstat %></p>
+              <p>WISDOM: <%= character.wisstat %></p>
+              <p>CHARM: <%= character.chastat %></p>
+          </div>
+      </div>
+      <div class="col-sm">
+          <div class="details-box">
+              <p>Equipment: <%= character.equipment %></p><br />
+              <p>Spells: <%= character.spell %></p>
+          </div>
+      </div>
+    </div>
+    
+    <hr />
+  <% end %>
+</div>
 
 
-<h1>D&D 5th Edition Character Creator</h1>
-
-<p><%= @characters.inspect %></p>
-
-<% @characters.each do |character| %>
-  <div>
-    <h3><%= character.name %></h3><br />
-    <p><%= character.race %></p><br />
-    <p><%= character.gender %></p><br />
-    <p><%= character.age %></p><br />
-    <p><%= character.charclass %></p><br />
-    <p><%= character.level %></p><br />
-    <p><%= character.alignment %></p><br />
-    <p><%= character.description %></p><br />
-    <p><%= character.equipment %></p><br />
-    <p><%= character.spell %></p><br />
-    <p><%= character.strstat %></p><br />
-    <p><%= character.dexstat %></p><br />
-    <p><%= character.constat %></p><br />
-    <p><%= character.intstat %></p><br />
-    <p><%= character.wisstat %></p><br />
-    <p><%= character.chastat %></p><br />
-    <p><%= character.wealth %></p><br />
-    <p><%= character.user.email %></p><br />
-  </div>
-
-  <hr />
-<% end %>
