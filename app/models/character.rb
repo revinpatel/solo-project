@@ -10,7 +10,6 @@ class Character < ApplicationRecord
   validates :alignment, presence: true
   validates :description, presence: true
   validates :equipment, presence: true
-  validates :spell, presence: true
   validates :wealth, presence: true
   validates :strstat, presence: true
   validates :dexstat, presence: true

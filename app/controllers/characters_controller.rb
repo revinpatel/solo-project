@@ -21,7 +21,7 @@ class CharactersController < ApplicationController
   end
 
   def edit
-    @character = Character.find(params[:id])
+    @character = Character.find_by_id(params[:id])
     if @character.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
@@ -55,4 +55,7 @@ class CharactersController < ApplicationController
     params.require(:character).permit(:race, :gender, :age, :charclass, :level, :name, :alignment, :description, :equipment, :spell, :wealth, :strstat, :dexstat, :constat, :intstat, :wisstat, :chastat)
   end
 
+  def render_not_found
+    render plain: 'Not Found', status: :not_found
+  end
 end
